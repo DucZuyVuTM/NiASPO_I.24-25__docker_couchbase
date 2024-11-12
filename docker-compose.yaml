@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  couchbase:
+    image: couchbase:latest
+    container_name: couchbase_server
+    ports:
+      - "8091:8091"  # Couchbase Web UI
+      - "8092:8092"
+      - "8093:8093"
+      - "8094:8094"
+      - "11210:11210" # Data service port
+      - "11211:11211"
+      - "18091:18091"
+      - "18092:18092"
+      - "18093:18093"
+    environment:
+      - COUCHBASE_ADMINISTRATOR_USERNAME=admin
+      - COUCHBASE_ADMINISTRATOR_PASSWORD=password
+    volumes:
+      - couchbase_data:/opt/couchbase/var
+
+volumes:
+  couchbase_data:
